@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+
+<h1 th:each="list : ${products}" th:text="${list.name}"></h1>
+
+<h2>Find product by name</h2>
+
+<form th:action="@{/results}"  th:method="post">
+
+    <label>Search:</label>
+    <input type="text" name="search">
+    <input type="submit" value="Wyślij">
+</form>
+
+<h2>Find product by category</h2>
+
+<form th:action="@{/resultsByCategory}"  th:method="post">
+    <label>Search:</label>
+    <input type="text" name="searchCategory">
+    <input type="submit" value="Wyślij">
+
+</form>
+
+
+<ul>
+    <li> <a href="/">Wróć do formularza</a> </li>
+</ul>
+
+</body>
+</html>

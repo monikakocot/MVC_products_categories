@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Insert a new product</h1>
+
+<form action="#" th:action="@{/}" th:object="${productForm}" method="post">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}" /></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" th:field="*{description}" /></td>
+            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
+        </tr>
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+
+<h1>Choose a category</h1>
+
+<select name="choice">
+    <option value="agd"> AGD </option>
+    <option value="rtv"> RTV</option>
+    <option value="others"> OTHERS</option>
+</select>
+
+</form>
+
+<ul>
+    <li> <a href="/results">Zobacz pełną listę produktów</a></li>
+    <li> <a href="/categories">Zobacz wszystkie kategorie</a></li>
+</ul>
+
+</body>
+</html>

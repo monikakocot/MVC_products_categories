@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+ <h1 th:if="${field1} != null" th:text="${wynik}"/>
+ Products from category:<h1 th:if="${field2} != null" th:each="list : ${wynik2}" th:text="${list.name}"></h1>
+
+
+ <!-- <h1 th:each="list : ${products}" th:text="${list.name}"></h1>-->
+
+ <ul>
+
+     <li> <a href="/results">Zobacz pełną listę produktów</a></li>
+     <li> <a href="/">Wróć do formularza</a> </li>
+
+ </ul>
+
+ </body>
+ </html>
