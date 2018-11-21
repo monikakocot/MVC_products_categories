@@ -6,8 +6,10 @@
 </head>
 <body>
 
- <h1 th:if="${field1} != null" th:text="${wynik}"/>
- Products from category:<h1 th:if="${field2} != null" th:each="list : ${wynik2}" th:text="${list.name}"></h1>
+ <h1 th:if="${field1} != null" th:text="${searchResults}"/>
+ Products from category:
+ <br>
+ <h1 th:if="${field2} != null" th:each="list : ${searchResults2}" th:text="${list.name}"></h1>
 
 
  <!-- <h1 th:each="list : ${products}" th:text="${list.name}"></h1>-->

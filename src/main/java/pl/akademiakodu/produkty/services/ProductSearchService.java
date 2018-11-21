@@ -31,9 +31,9 @@ public class ProductSearchService {
     public static String search(String name, List<ProductForm> productFormList) {
         for (int i = 0; i <= productFormList.size() - 1; i++)
             if (productFormList.get(i).getName().equals(name)) {
-                return productFormList.get(i).getName() + " jest dostępny/a w bazie";
+                return productFormList.get(i).getName() + " is in the store";
             }
-        return "Produktu nie ma w bazie";
+        return "Products it NOT in the store";
     }
 
     public static List<ProductForm> searchByCategory(String categoryName, List<ProductForm> productFormList) {

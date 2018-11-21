@@ -64,18 +64,18 @@ public class WebController{
     public String search (@RequestParam("search") String search,
                           Model model){
             model.addAttribute("field1",search);
-            model.addAttribute("wynik", ProductSearchService.search(search, ProductSearchService.getProductFromList()));
+            model.addAttribute("searchResults", ProductSearchService.search(search, ProductSearchService.getProductFromList()));
 
-        return "wynik";
+        return "searchResults";
     }
 
     @PostMapping("/resultsByCategory")
     public String searchByCategory (@RequestParam("searchCategory") String searchCategory,
                           Model model){
         model.addAttribute("field2",searchCategory);
-        model.addAttribute("wynik2", ProductSearchService.searchByCategory(searchCategory, ProductSearchService.getProductFromList()));
+        model.addAttribute("searchResults2", ProductSearchService.searchByCategory(searchCategory, ProductSearchService.getProductFromList()));
 
-        return "wynik";
+        return "searchResults";
     }
 
     @GetMapping("/categories")
@@ -85,15 +85,29 @@ public class WebController{
     }
 
 
-/* Opcja z REDIRECT
+/* REDIRECT VERISION
     @PostMapping("/")
-    public String checkProductInfo(@Valid ProductForm productForm, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String checkProductInfo(@ModelAttribute @Valid ProductForm productForm,
+                                   BindingResult bindingResult, Model model,
+                                   @RequestParam("choice") String choice) {
 
         if (bindingResult.hasErrors()) {
             return "form";
         }
         redirectAttributes.addFlashAttribute("product",productForm);
-        return "redirect:/results"; //zawsze wyczyści dane ?
+
+        productListService.addProductToList(productForm);
+        productSearchService.addProductToList(productForm);
+
+        if (choice.equals("agd")) {
+            productForm.setCategoryName(CategoryRepository.getCategories().get(0).getCategoryName());
+        } else if (choice.equals("rtv")) {
+            productForm.setCategoryName(CategoryRepository.getCategories().get(1).getCategoryName());
+        } else if (choice.equals("others")) {
+            productForm.setCategoryName(CategoryRepository.getCategories().get(2).getCategoryName());
+        }
+
+        return "redirect:/results"; // after session clean data  ??
     }
 */
 

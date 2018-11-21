@@ -13,14 +13,12 @@ import java.util.List;
 // zastosowanie np. system logowania - stan na sesję zalogowania; koszyk  w sklepie.
 
 public class ProductListService {
-
-
+    
     private static List<ProductForm> productFormList;
 
     public ProductListService() {
         productFormList = new ArrayList<>();
     }
-
 
     public void addProductToList (ProductForm form){
         productFormList.add(form);
